@@ -1,0 +1,20 @@
+[
+  {
+    "nome": "Monkey D. Luffy",
+    "idade": 19,
+    "oficio": "pirata",
+    "habilidade": "Gomu Gomu no Mi"
+  },
+  {
+    "nome": "Roronoa Zoro",
+    "idade": 21,
+    "oficio": "pirata",
+    "habilidade": "Estilo de 3 katanas"
+  },
+  {
+    "nome": "Sakasuki Akainu",
+    "idade": 55,
+    "oficio": "marinha",
+    "habilidade": "Magu Magu no Mi"
+  }
+]

@@ -1,28 +1,7 @@
-const personagens = [
-  {
-    id: 1,
-    nome: 'Monkey D. Luffy',
-    idade: 19,
-    oficio: 'pirata',
-    habilidade: 'Gomu Gomu no Mi',
-  },
-  {
-    id: 2,
-    nome: 'Roronoa Zoro',
-    idade: 21,
-    oficio: 'pirata',
-    habilidade: 'Estilo de 3 katanas',
-  },
-  {
-    id: 3,
-    nome: 'Sakasuki Akainu',
-    idade: 55,
-    oficio: 'marinha',
-    habilidade: 'Magu Magu no Mi',
-  },
-];
+const Personagens = require('../models/Personagem');
 
-const findAllpersonagensService = () => {
+const findAllpersonagensService = async () => {
+  const personagens = await Personagens.find();
   return personagens;
 };
 
