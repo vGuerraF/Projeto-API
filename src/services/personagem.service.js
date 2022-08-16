@@ -1,3 +1,27 @@
+// const personagens = [
+//   {
+//     id: 1,
+//     nome: 'Monkey D. Luffy',
+//     idade: 19,
+//     oficio: 'pirata',
+//     habilidade: 'Gomu Gomu no Mi',
+//   },
+//   {
+//     id: 2,
+//     nome: 'Roronoa Zoro',
+//     idade: 21,
+//     oficio: 'pirata',
+//     habilidade: 'Estilo de 3 katanas',
+//   },
+//   {
+//     id: 3,
+//     nome: 'Sakasuki Akainu',
+//     idade: 55,
+//     oficio: 'marinha',
+//     habilidade: 'Magu Magu no Mi',
+//   },
+// ];
+
 const Personagens = require('../models/Personagem');
 
 const findAllpersonagensService = async () => {
@@ -5,31 +29,26 @@ const findAllpersonagensService = async () => {
   return personagens;
 };
 
-const findByIdpersonagenservice = (idParam) => {
-  return personagens.find((personagem) => personagem.id == idParam);
+const findByIdpersonagenservice = async (idParam) => {
+  const personagem = await Personagens.findById(idParam);
+  return personagem;
 };
 
-const createpersonagenservice = (newpersonagem) => {
-  const newId = personagens.length + 1;
-  newpersonagem.id = newId;
-  personagens.push(newpersonagem);
-  return newpersonagem;
+const createpersonagenservice = async (newpersonagem) => {
+  const personagemCreated = await Personagens.create(newpersonagem);
+  return personagemCreated;
 };
 
-const updatepersonagenservice = (id, personagemEdited) => {
-  personagemEdited['id'] = id;
-  const personagemIndex = personagens.findIndex(
-    (personagem) => personagem.id == id,
+const updatepersonagenservice = async (id, personagemEdited) => {
+  const personagemUpdate = await Personagens.findByIdAndUpdate(
+    id,
+    personagemEdited,
   );
-  personagens[personagemIndex] = personagemEdited;
-  return personagemEdited;
+  return personagemUpdate;
 };
 
-const deletepersonagenservice = (id) => {
-  const personagemIndex = personagens.findIndex(
-    (personagem) => personagem.id == id,
-  );
-  return personagens.splice(personagemIndex, 1);
+const deletepersonagenservice = async (id) => {
+  return await Personagens.findByIdAndDelete(id);
 };
 
 module.exports = {
